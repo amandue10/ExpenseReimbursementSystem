@@ -4,7 +4,6 @@ from util.database_connection import connection
 
 
 class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
-
     # create request is green in pycharm, persisting to database
     def create_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
         sql = "insert into project1.reimbursement_request values(default, %s, %s, %s, %s, %s, %s) returning " \
@@ -18,8 +17,8 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         reimbursement_request.request_id = generated_id
         return reimbursement_request
 
-    # get reimbursement request by employee id
-    # pytest is green. 
+    # get all reimbursement info by employee id
+    # pytest is green.
     def get_reimbursement_requests_by_id(self, employee_id: int) -> ReimbursementRequest:
         sql = "select * from project1.reimbursement_request where employee_id = %s"
         cursor = connection.cursor()
@@ -27,3 +26,17 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         request_record = cursor.fetchone()
         request = ReimbursementRequest(*request_record)
         return request
+
+    def get_all_reimbursement_history(self) -> list[ReimbursementRequest]:
+        sql = "select * from project1.reimbursement_request"
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        reimbursement_records = cursor.fetchall()
+        reimbursement_list = []
+        for reimbursement in reimbursement_records:
+            reimbursement_list.append(ReimbursementRequest(*reimbursement))
+        return reimbursement_list
+
+    def update_reimbursement_request(self, employee_id: int) -> ReimbursementRequest:
+        pass
+

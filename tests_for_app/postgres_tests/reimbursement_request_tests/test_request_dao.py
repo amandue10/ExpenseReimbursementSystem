@@ -3,7 +3,7 @@ from entities.reimbursement_request import ReimbursementRequest
 
 request_dao = ReimbursementRequestPostgresDAO()
 
-new_request = ReimbursementRequest(1, 1, 1, 200, "gas", " ", " ")
+new_request = ReimbursementRequest(1, 1, 1, 200, "gas", " ", " ", '05 Dec 2000')
 
 
 def test_create_request_success():
@@ -11,6 +11,6 @@ def test_create_request_success():
     assert request_result.request_id != 0
 
 
-def test_select_request_by_employee_id():
-    initial_request = request_dao.get_reimbursement_requests_by_id(1)
+def test_select_all_requests_by_employee_id():
+    initial_request = request_dao.get_reimbursement_request_by_id(1)
     assert initial_request.employee_id == 1
