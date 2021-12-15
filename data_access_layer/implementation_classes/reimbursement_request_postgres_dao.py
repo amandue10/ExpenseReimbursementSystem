@@ -18,8 +18,6 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         reimbursement_request.request_id = generated_id
         return reimbursement_request
 
-        # get all reimbursement info by employee id
-
     # pytest is green.
     # Get all reimbursement requests by employee_id
     def get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
@@ -69,7 +67,7 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
             reimbursement_list.append(ReimbursementRequest(*reimbursement))
         return reimbursement_list
 
-     # pytest
+    # pytest green
     # get completed reimbursement requests
     def get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
         sql = "select * from reimbursement_request where request_status like '%completed%'"
