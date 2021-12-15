@@ -12,7 +12,7 @@ status.add("denied- with comment")
 
 random_comment = status.pop()
 
-update_rr = ReimbursementRequest(1, 1, 1, 200, "ice machine", random_comment, " ", '05 Dec 2012')
+update_rr = ReimbursementRequest(1, 1, 1, 200, "ice machine", random_comment, "completed", '05 Dec 2012')
 
 
 def test_create_request_success():
@@ -33,3 +33,13 @@ def test_select_all_rr_success():
 def test_update_reimbursement_request():
     updated_rr = request_dao.update_reimbursement_request(update_rr)
     assert updated_rr.request_comment2 == random_comment
+
+
+def test_get_pending_rr():
+    pending_rr = request_dao.get_pending_reimbursement_requests()
+    assert len(pending_rr) >= 4
+
+
+def test_get_completed_rr():
+    completed_rr = request_dao.get_pending_reimbursement_requests()
+    assert len(completed_rr) >= 1

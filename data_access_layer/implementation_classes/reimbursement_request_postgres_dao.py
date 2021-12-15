@@ -21,6 +21,7 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         # get all reimbursement info by employee id
 
     # pytest is green.
+    # Get all reimbursement requests by employee_id
     def get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
         sql = "select * from project1.reimbursement_request where employee_id = %s"
         cursor = connection.cursor()
@@ -44,9 +45,10 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         return reimbursement_list
 
     # update for manager to determine, approval, denial, and comment.
-    # pytest not green undefined columns
+    # pytest green and persisting to database
     def update_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
-        sql = "update project1.reimbursement_request set employee_id = %s, manager_id = %s, request_amount = %s, request_comment1 = %s, request_comment2 = %s, request_status = %s, rr_date = %s where request_id = %s"
+        sql = "update project1.reimbursement_request set employee_id = %s, manager_id = %s, request_amount = %s, " \
+              "request_comment1 = %s, request_comment2 = %s, request_status = %s, rr_date = %s where request_id = %s "
         cursor = connection.cursor()
         cursor.execute(sql, (reimbursement_request.employee_id, reimbursement_request.manager_id,
                              reimbursement_request.request_amount, reimbursement_request.request_comment,
@@ -54,3 +56,27 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
                              reimbursement_request.rr_date, reimbursement_request.request_id))
         connection.commit()
         return reimbursement_request
+
+    # pytest green
+    # get pending reimbursement requests
+    def get_pending_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        sql = "select * from project1.reimbursement_request where request_status like '% %' "
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        reimbursement_records = cursor.fetchall()
+        reimbursement_list = []
+        for reimbursement in reimbursement_records:
+            reimbursement_list.append(ReimbursementRequest(*reimbursement))
+        return reimbursement_list
+
+     # pytest
+    # get completed reimbursement requests
+    def get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        sql = "select * from reimbursement_request where request_status like '%completed%'"
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        reimbursement_records = cursor.fetchall()
+        reimbursement_list = []
+        for reimbursement in reimbursement_records:
+            reimbursement_list.append(ReimbursementRequest(*reimbursement))
+        return reimbursement_list

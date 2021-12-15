@@ -24,3 +24,14 @@ class ReimbursementRequestDAO(ABC):
     @abstractmethod
     def update_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
         pass
+
+    # Get pending reimbursement requests
+    @abstractmethod
+    def get_pending_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        pass
+
+    # Get completed reimbursement requests
+    @abstractmethod
+    def get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        pass
+
