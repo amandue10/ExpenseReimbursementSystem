@@ -4,5 +4,5 @@ employee_dao = EmployeePostgresDAO()
 
 
 def test_select_all_emp_information_by_employee_id():
-    employee = employee_dao.get_reimbursement_requests_by_id(4)
+    employee = employee_dao.get_employee_information_by_id(4)
     assert employee.employee_id == 4
