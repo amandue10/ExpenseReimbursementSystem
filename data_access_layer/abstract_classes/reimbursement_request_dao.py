@@ -22,5 +22,5 @@ class ReimbursementRequestDAO(ABC):
 
     # update reimbursement request
     @abstractmethod
-    def update_reimbursement_request(self, employee_id: int) -> ReimbursementRequest:
+    def update_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
         pass

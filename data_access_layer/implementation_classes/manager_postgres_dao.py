@@ -4,6 +4,8 @@ from util.database_connection import connection
 
 
 class ManagerPostgresDAO(ManagerDAO):
+    # green pytest
+    # get all manager information for login
     def get_manager_information_by_id(self, manager_id: int) -> Manager:
         sql = "select * from project1.manager where manager_id = %s"
         cursor = connection.cursor()

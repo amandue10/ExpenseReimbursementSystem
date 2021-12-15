@@ -11,13 +11,15 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         cursor = connection.cursor()
         cursor.execute(sql, (reimbursement_request.employee_id, reimbursement_request.manager_id,
                              reimbursement_request.request_amount, reimbursement_request.request_comment,
-                             reimbursement_request.request_comment2, reimbursement_request.request_status, reimbursement_request.rr_date))
+                             reimbursement_request.request_comment2, reimbursement_request.request_status,
+                             reimbursement_request.rr_date))
         connection.commit()
         generated_id = cursor.fetchone()[0]
         reimbursement_request.request_id = generated_id
         return reimbursement_request
 
         # get all reimbursement info by employee id
+
     # pytest is green.
     def get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
         sql = "select * from project1.reimbursement_request where employee_id = %s"
@@ -41,5 +43,14 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
             reimbursement_list.append(ReimbursementRequest(*reimbursement))
         return reimbursement_list
 
-    def update_reimbursement_request(self, employee_id: int) -> ReimbursementRequest:
-        pass
+    # update for manager to determine, approval, denial, and comment.
+    # pytest not green undefined columns
+    def update_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
+        sql = "update project1.reimbursement_request set employee_id = %s, manager_id = %s, request_amount = %s, request_comment1 = %s, request_comment2 = %s, request_status = %s, rr_date = %s where request_id = %s"
+        cursor = connection.cursor()
+        cursor.execute(sql, (reimbursement_request.employee_id, reimbursement_request.manager_id,
+                             reimbursement_request.request_amount, reimbursement_request.request_comment,
+                             reimbursement_request.request_comment2, reimbursement_request.request_status,
+                             reimbursement_request.rr_date, reimbursement_request.request_id))
+        connection.commit()
+        return reimbursement_request

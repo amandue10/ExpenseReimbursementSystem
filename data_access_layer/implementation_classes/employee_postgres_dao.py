@@ -4,6 +4,8 @@ from util.database_connection import connection
 
 
 class EmployeePostgresDAO(EmployeeDAO):
+    # green pytest
+    # get all employe information for login
     def get_employee_information_by_id(self, employee_id: int) -> Employee:
         sql = "select * from project1.employee where employee_id = %s"
         cursor = connection.cursor()
