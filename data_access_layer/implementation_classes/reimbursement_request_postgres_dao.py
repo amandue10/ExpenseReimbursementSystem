@@ -6,18 +6,18 @@ from util.database_connection import connection
 class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
     # create request is green in pycharm, persisting to database
     def create_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
-        sql = "insert into project1.reimbursement_request values(default, %s, %s, %s, %s, %s, %s) returning " \
+        sql = "insert into project1.reimbursement_request values(default, %s, %s, %s, %s, %s, %s, %s) returning " \
               "request_id"
         cursor = connection.cursor()
         cursor.execute(sql, (reimbursement_request.employee_id, reimbursement_request.manager_id,
                              reimbursement_request.request_amount, reimbursement_request.request_comment,
-                             reimbursement_request.request_comment2, reimbursement_request.request_status))
+                             reimbursement_request.request_comment2, reimbursement_request.request_status, reimbursement_request.rr_date))
         connection.commit()
         generated_id = cursor.fetchone()[0]
         reimbursement_request.request_id = generated_id
         return reimbursement_request
 
-    # get all reimbursement info by employee id
+        # get all reimbursement info by employee id
     # pytest is green.
     def get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
         sql = "select * from project1.reimbursement_request where employee_id = %s"

@@ -8,7 +8,8 @@ class ReimbursementRequestPostgresService(ReimbursementRequestService):
         self.reimbursement_request_dao = reimbursement_request_dao
 
     def service_create_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
-        return self.reimbursement_request_dao.create_reimbursement_request(reimbursement_request)
+        created_rr = self.reimbursement_request_dao.create_reimbursement_request(reimbursement_request)
+        return created_rr
 
     def service_get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
         return self.reimbursement_request_dao.get_reimbursement_requests_by_id(employee_id)
