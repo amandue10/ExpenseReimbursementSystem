@@ -27,6 +27,8 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
         request = ReimbursementRequest(*request_record)
         return request
 
+    # pytest is green
+    # get all reimbursement history
     def get_all_reimbursement_history(self) -> list[ReimbursementRequest]:
         sql = "select * from project1.reimbursement_request"
         cursor = connection.cursor()
