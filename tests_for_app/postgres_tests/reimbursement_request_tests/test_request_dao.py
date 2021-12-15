@@ -3,7 +3,7 @@ from entities.reimbursement_request import ReimbursementRequest
 
 request_dao = ReimbursementRequestPostgresDAO()
 
-new_request = ReimbursementRequest(1, 2, 1, 300, "holiday party", " ", " ", '05 Dec 2012')
+new_request = ReimbursementRequest(1, 3, 1, 200, "ice machine", " ", " ", '05 Dec 2012')
 
 
 def test_create_request_success():
@@ -12,8 +12,8 @@ def test_create_request_success():
 
 
 def test_select_all_requests_by_employee_id():
-    initial_request = request_dao.get_reimbursement_requests_by_id(1)
-    assert initial_request.employee_id == 1
+    returned_employee_rr = request_dao.get_reimbursement_requests_by_id(2)
+    assert len(returned_employee_rr) >= 2
 
 
 def test_select_all_rr_success():

@@ -13,7 +13,7 @@ class ReimbursementRequest:
         self.request_status = request_status
         self.rr_date = rr_date
 
-    def make_customer_dictionary(self):
+    def make_rr_dictionary(self):
         return {
             "requestId": self.request_id,
             "employeeId": self.employee_id,

@@ -19,13 +19,15 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
 
     # get all reimbursement info by employee id
     # pytest is green.
-    def get_reimbursement_requests_by_id(self, employee_id: int) -> ReimbursementRequest:
+    def get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
         sql = "select * from project1.reimbursement_request where employee_id = %s"
         cursor = connection.cursor()
         cursor.execute(sql, [employee_id])
-        request_record = cursor.fetchone()
-        request = ReimbursementRequest(*request_record)
-        return request
+        request_record = cursor.fetchall()
+        request_list = []
+        for reimbursement_request in request_record:
+            request_list.append(ReimbursementRequest(*reimbursement_request))
+        return request_list
 
     # pytest is green
     # get all reimbursement history
@@ -41,4 +43,3 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
 
     def update_reimbursement_request(self, employee_id: int) -> ReimbursementRequest:
         pass
-
