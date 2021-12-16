@@ -4,12 +4,14 @@
 from flask import Flask, jsonify, request
 
 from data_access_layer.implementation_classes.employee_postgres_dao import EmployeePostgresDAO
+from data_access_layer.implementation_classes.manager_postgres_dao import ManagerPostgresDAO
 from data_access_layer.implementation_classes.reimbursement_request_postgres_dao import ReimbursementRequestPostgresDAO
 from entities import reimbursement_request
 from entities.employee import Employee
 from entities.reimbursement_request import ReimbursementRequest
 from service_layer.abstract_services import employee_service
 from service_layer.implementation_services.employee_postgres_service import EmployeePostgresService
+from service_layer.implementation_services.manager_postgres_service import ManagerPostgresService
 from service_layer.implementation_services.reimbursement_request_postgres_service import \
     ReimbursementRequestPostgresService
 
@@ -19,6 +21,8 @@ reimbursement_request_dao = ReimbursementRequestPostgresDAO()
 reimbursement_request_service = ReimbursementRequestPostgresService(reimbursement_request_dao)
 employee_dao = EmployeePostgresDAO()
 employee_service = EmployeePostgresService(employee_dao)
+manager_dao = ManagerPostgresDAO()
+manager_service = ManagerPostgresService(manager_dao)
 
 
 # green pytest, pulls list in postman
@@ -100,8 +104,26 @@ def update_request(request_id: str):
 def employee_login():
     body = request.get_json()
     login_credentials = Employee(body["employeeId"], body["firstName"], body["lastName"], body["password"])
-    validated = employee_service.service_validate_employee_login(login_credentials.employee_id, login_credentials.first_name, login_credentials.last_name,
+    validated = employee_service.service_validate_employee_login(login_credentials.employee_id,
+                                                                 login_credentials.first_name,
+                                                                 login_credentials.last_name,
                                                                  login_credentials.password)
+    if validated:
+        message = {"validated": True}
+        return jsonify(message)
+    else:
+        message = {"validated": False}
+        return jsonify(message)
+
+
+@app.post("/manager_login")
+def manager_login():
+    body = request.get_json()
+    login_credentials = Employee(body["managerId"], body["firstName"], body["lastName"], body["password"])
+    validated = manager_service.service_validate_manager_login(login_credentials.employee_id,
+                                                               login_credentials.first_name,
+                                                               login_credentials.last_name,
+                                                               login_credentials.password)
     if validated:
         message = {"validated": True}
         return jsonify(message)
