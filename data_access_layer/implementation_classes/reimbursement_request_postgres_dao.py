@@ -70,11 +70,11 @@ class ReimbursementRequestPostgresDAO(ReimbursementRequestDAO):
     # pytest green
     # get completed reimbursement requests
     def get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
-        sql = "select * from reimbursement_request where request_status like '%completed%'"
+        sql = "select * from project1.reimbursement_request where request_status like '%completed%'"
         cursor = connection.cursor()
         cursor.execute(sql)
         reimbursement_records = cursor.fetchall()
         reimbursement_list = []
-        for reimbursement in reimbursement_records:
-            reimbursement_list.append(ReimbursementRequest(*reimbursement))
+        for reimbursements in reimbursement_records:
+            reimbursement_list.append(ReimbursementRequest(*reimbursements))
         return reimbursement_list

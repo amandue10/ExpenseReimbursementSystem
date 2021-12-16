@@ -33,6 +33,7 @@ def get_employee_rrs_by_employee_id(employee_id: str):
 
 
 # create rr
+# green pytest, postman working and persisting to database
 @app.post("/reimbursement_request")
 def create_rr():
     body = request.get_json()
@@ -52,6 +53,8 @@ def create_rr():
     return rr_as_json
 
 
+# Pulls all pending requests.
+# pytest green, postman working and pulling correct information
 @app.get("/pending_requests")
 def get_pending_requests():
     pending_requests = reimbursement_request_service.service_get_pending_reimbursement_requests()
@@ -60,6 +63,18 @@ def get_pending_requests():
         dictionary_pending_request = reimbursement_request.make_rr_dictionary()
         pending_requests_as_dictionary.append(dictionary_pending_request)
     return jsonify(pending_requests_as_dictionary), 200
+
+
+# Pulls all pending requests.
+# pytest green, postman working and pulling correct information
+@app.get("/completed_requests")
+def get_completed_requests():
+    completed_requests = reimbursement_request_service.service_get_completed_reimbursement_requests()
+    completed_requests_as_dictionary = []
+    for reimbursement_request in completed_requests:
+        dictionary_completed_request = reimbursement_request.make_rr_dictionary()
+        completed_requests_as_dictionary.append(dictionary_completed_request)
+    return jsonify(completed_requests_as_dictionary)
 
 
 app.run()

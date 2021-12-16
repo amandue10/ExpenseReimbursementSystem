@@ -12,7 +12,7 @@ status.add("denied- with comment")
 
 random_comment = status.pop()
 
-update_rr = ReimbursementRequest(1, 1, 1, 200, "ice machine", random_comment, "completed", '05 Dec 2012')
+update_rr = ReimbursementRequest(2, 2, 1, 200, "ice machine", random_comment, "completed", '05 Dec 2012')
 
 
 def test_create_request_success():
