@@ -2,6 +2,7 @@
 #
 # logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from data_access_layer.implementation_classes.employee_postgres_dao import EmployeePostgresDAO
 from data_access_layer.implementation_classes.manager_postgres_dao import ManagerPostgresDAO
@@ -16,6 +17,7 @@ from service_layer.implementation_services.reimbursement_request_postgres_servic
     ReimbursementRequestPostgresService
 
 app: Flask = Flask(__name__)
+CORS(app)
 
 reimbursement_request_dao = ReimbursementRequestPostgresDAO()
 reimbursement_request_service = ReimbursementRequestPostgresService(reimbursement_request_dao)
