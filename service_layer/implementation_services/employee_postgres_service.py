@@ -8,7 +8,7 @@ class EmployeePostgresService(EmployeeService):
 
     def service_validate_employee_login(self, employee_id: int, first_name: str, last_name: str, password: str):
         validation = self.employee_dao.get_employee_by_credentials(employee_id, first_name, last_name, password)
-        if type(validation) == list:
+        if type(validation) == tuple:
             return True
         else:
             return False
