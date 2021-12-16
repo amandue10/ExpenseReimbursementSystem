@@ -20,3 +20,8 @@ class ReimbursementRequestPostgresService(ReimbursementRequestService):
 
     def service_get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
         return self.reimbursement_request_dao.get_completed_reimbursement_requests()
+
+    def service_update_reimbursement_request(self, reimbursement_request: ReimbursementRequest) -> ReimbursementRequest:
+        return self.reimbursement_request_dao.update_reimbursement_request(reimbursement_request)
+
+

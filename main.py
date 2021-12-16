@@ -65,7 +65,7 @@ def get_pending_requests():
     return jsonify(pending_requests_as_dictionary), 200
 
 
-# Pulls all pending requests.
+# Pulls all completed requests.
 # pytest green, postman working and pulling correct information
 @app.get("/completed_requests")
 def get_completed_requests():
@@ -75,6 +75,24 @@ def get_completed_requests():
         dictionary_completed_request = reimbursement_request.make_rr_dictionary()
         completed_requests_as_dictionary.append(dictionary_completed_request)
     return jsonify(completed_requests_as_dictionary)
+
+
+@app.patch("/manager/request_decision/<request_id>")
+def update_request(request_id: str):
+    body = request.get_json()
+    update_info = ReimbursementRequest(
+        body["requestId"],
+        body["employeeId"],
+        body["managerId"],
+        body["requestAmount"],
+        body["requestComment"],
+        body["requestComment2"],
+        body["requestStatus"],
+        body["rrDate"]
+    )
+    updated_rr = reimbursement_request_service.service_update_reimbursement_request(update_info)
+    updated_rr_as_dictionary = updated_rr.make_rr_dictionary()
+    return jsonify(updated_rr_as_dictionary), 200
 
 
 app.run()
