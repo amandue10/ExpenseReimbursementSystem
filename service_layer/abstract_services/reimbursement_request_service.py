@@ -14,3 +14,13 @@ class ReimbursementRequestService(ABC):
     @abstractmethod
     def service_get_reimbursement_requests_by_id(self, employee_id: int) -> ReimbursementRequest:
         pass
+
+    # Get pending reimbursement requests
+    @abstractmethod
+    def service_get_pending_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        pass
+
+    # Get completed reimbursement requests
+    @abstractmethod
+    def service_get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        pass

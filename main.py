@@ -52,4 +52,14 @@ def create_rr():
     return rr_as_json
 
 
+@app.get("/pending_requests")
+def get_pending_requests():
+    pending_requests = reimbursement_request_service.service_get_pending_reimbursement_requests()
+    pending_requests_as_dictionary = []
+    for reimbursement_request in pending_requests:
+        dictionary_pending_request = reimbursement_request.make_rr_dictionary()
+        pending_requests_as_dictionary.append(dictionary_pending_request)
+    return jsonify(pending_requests_as_dictionary), 200
+
+
 app.run()

@@ -4,6 +4,7 @@ from service_layer.abstract_services.reimbursement_request_service import Reimbu
 
 
 class ReimbursementRequestPostgresService(ReimbursementRequestService):
+
     def __init__(self, reimbursement_request_dao: ReimbursementRequestPostgresDAO):
         self.reimbursement_request_dao = reimbursement_request_dao
 
@@ -13,3 +14,9 @@ class ReimbursementRequestPostgresService(ReimbursementRequestService):
 
     def service_get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
         return self.reimbursement_request_dao.get_reimbursement_requests_by_id(employee_id)
+
+    def service_get_pending_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        return self.reimbursement_request_dao.get_pending_reimbursement_requests()
+
+    def service_get_completed_reimbursement_requests(self) -> list[ReimbursementRequest]:
+        return self.reimbursement_request_dao.get_completed_reimbursement_requests()
