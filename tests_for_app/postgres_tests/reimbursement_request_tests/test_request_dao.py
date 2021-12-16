@@ -5,14 +5,14 @@ request_dao = ReimbursementRequestPostgresDAO()
 
 new_request = ReimbursementRequest(1, 3, 1, 200, "ice machine", " ", " ", '05 Dec 2012')
 
-status = {"approval"}
-status.add("denied")
-status.add("approval- with comment")
-status.add("denied- with comment")
+status = {"approval-completed"}
+status.add("denied-completed")
+# status.add("approval- with comment")
+# status.add("denied- with comment")
 
-random_comment = status.pop()
+random_status = status.pop()
 
-update_rr = ReimbursementRequest(2, 2, 1, 200, "ice machine", random_comment, "completed", '05 Dec 2012')
+update_rr = ReimbursementRequest(2, 3, 1, 300, "birthday party", "I made this decision ...", random_status, '05 Dec 2012')
 
 
 def test_create_request_success():
@@ -32,14 +32,14 @@ def test_select_all_rr_success():
 
 def test_update_reimbursement_request():
     updated_rr = request_dao.update_reimbursement_request(update_rr)
-    assert updated_rr.request_comment2 == random_comment
+    assert updated_rr.request_status == random_status
 
 
 def test_get_pending_rr():
     pending_rr = request_dao.get_pending_reimbursement_requests()
-    assert len(pending_rr) >= 4
+    assert len(pending_rr) >= 3
 
 
 def test_get_completed_rr():
     completed_rr = request_dao.get_pending_reimbursement_requests()
-    assert len(completed_rr) >= 1
+    assert len(completed_rr) >= 2
