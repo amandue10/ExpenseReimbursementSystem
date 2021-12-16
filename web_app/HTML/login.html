@@ -12,14 +12,14 @@
 
     <h3>System Login</h3>
     <div class="container">
-        <label for="uname"><b>Id</b></label>
-        <input type="text" placeholder="Enter Your Id" name="uname" required>
+        <label for="idInput"><b>Id</b></label>
+        <input type="text" placeholder="Enter Your Id" id="idInput" required>
     <br>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="password" required>
     <br>
-        <button type="submit">Manager Login</button>
-        <button type="submit">Employee Login</button>
+    <button id="employeeLoginButton" onclick="login()">login</button>
+    <button id="managerLoginButton" onclick="login()">login</button>
         <br>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -44,6 +44,6 @@
         </label>
       </div>
     </center> -->
-    
+    <script src="../js/login_page.js"></script>
 </body>
 </html>
