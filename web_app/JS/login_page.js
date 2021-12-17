@@ -25,7 +25,7 @@ async function employeeLogin(){
             alert("Employee login failed: please try again")
         }
     } else {
-        alert("your login request failed")
+        alert("your Employee login request failed")
     }
 }
 
@@ -46,6 +46,6 @@ async function managerLogin(){
             alert("Manager login failed: please try again")
         }
     } else {
-        alert("your login request failed")
+        alert("your Manager login request failed")
     }
 }
