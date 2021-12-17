@@ -1,6 +1,9 @@
-// const header = document.createElement("h1");
-// header.textContent = `you logged in successfully`;
-// document.body.appendChild(header);
+const header = document.createElement("h1");
+header.textContent = `Welcome`;
+document.body.appendChild(header);
+
+const employeeTable = document.getElementById("employeeTable");
+const employeeTableBody = document.getElementById("employeeTableBody");
 
 function logout(){
     sessionStorage.clear();
@@ -47,9 +50,9 @@ function populateData(responseBody){
     
     
 
-    for (let player of responseBody){
+    for (let reimbursement_request of responseBody){
         let tableRow = document.createElement("tr");
-        tableRow.innerHTML = `<td>${employee.employeeId}</td><td>${employee.managerId}</td><td>${employee.requestAmount}</td><td>${employee.requestComment}</td><td>${employee.requestComment2}</td><td>${employee.requestStatus}<td>${employee.rrDate}</td></td>`;
+        tableRow.innerHTML = `<td>${reimbursement_request.employeeId}</td><td>${reimbursement_request.managerId}</td><td>${reimbursement_request.requestAmount}</td><td>${reimbursement_request.requestComment}</td><td>${reimbursement_request.requestComment2}</td><td>${reimbursement_request.requestStatus}<td>${reimbursement_request.rrDate}</td>`;
         EmployeeTableBody.appendChild(tableRow);
     }
 }

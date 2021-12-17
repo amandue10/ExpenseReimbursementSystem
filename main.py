@@ -33,9 +33,9 @@ manager_service = ManagerPostgresService(manager_dao)
 def get_employee_rrs_by_employee_id(employee_id: str):
     results = reimbursement_request_service.service_get_reimbursement_requests_by_id(int(employee_id))
     employee_rr_as_dictionaries = []
-    for reimbursement_requests in results:
-        rr_accounts_dictionaries = reimbursement_requests.make_rr_dictionary()
-        employee_rr_as_dictionaries.append(rr_accounts_dictionaries)
+    for reimbursement_request in results:
+        rr_dictionaries = reimbursement_request.make_rr_dictionary()
+        employee_rr_as_dictionaries.append(rr_dictionaries)
         return jsonify(employee_rr_as_dictionaries), 200
 
 
