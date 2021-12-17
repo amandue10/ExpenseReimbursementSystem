@@ -8,6 +8,11 @@ const managerLastName = document.getElementById("managerLastNameInput")
 const managerPassword = document.getElementById("managerPasswordInput")
 
 
+function transfer(employeeId){
+sessionStorage.setItem("value",employeeId.value);
+window.location.href = "employee_page.html";
+}
+
 async function employeeLogin(){
     let response = await fetch(
         "http://127.0.0.1:5000/employee_login", {

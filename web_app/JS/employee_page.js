@@ -2,6 +2,9 @@ const header = document.createElement("h1");
 header.textContent = `Welcome`;
 document.body.appendChild(header);
 
+const result = sessionStorage.getItem("value");
+
+
 const employeeTable = document.getElementById("employeeTable");
 const employeeTableBody = document.getElementById("employeeTableBody");
 
@@ -34,9 +37,9 @@ async function employeeCreateRequest(){
 
 
 async function getEmployeeData(){
-    let url = "http://127.0.0.1:5000/reimbursement_requests/<employee_id>";
+    let url = "http://127.0.0.1:5000/reimbursement_requests/";
 
-    let response = await fetch(url);
+    let response = await fetch(url + result);
     
     if (response.status === 200){
         let body = await response.json();
@@ -53,7 +56,7 @@ function populateData(responseBody){
     for (let reimbursement_request of responseBody){
         let tableRow = document.createElement("tr");
         tableRow.innerHTML = `<td>${reimbursement_request.employeeId}</td><td>${reimbursement_request.managerId}</td><td>${reimbursement_request.requestAmount}</td><td>${reimbursement_request.requestComment}</td><td>${reimbursement_request.requestComment2}</td><td>${reimbursement_request.requestStatus}<td>${reimbursement_request.rrDate}</td>`;
-        EmployeeTableBody.appendChild(tableRow);
+        employeeTableBody.appendChild(tableRow);
     }
 }
 
