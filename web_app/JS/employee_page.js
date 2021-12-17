@@ -4,7 +4,15 @@ document.body.appendChild(header);
 
 const result = sessionStorage.getItem("value");
 
-
+// for create employee rr ----
+const employeeId = document.getElementById("idInput")
+const managerId = document.getElementById("managerIdInput")
+const requestAmount = document.getElementById("requestAmountInput")
+const employeeComment = document.getElementById("employeeCommentInput")
+const managerComment = document.getElementById("managerCommentInput")
+const status = document.getElementById("statusBoxInput")
+const requestDate = document.getElementById("requestDateInput")
+// -----------------------------
 const employeeTable = document.getElementById("employeeTable");
 const employeeTableBody = document.getElementById("employeeTableBody");
 
@@ -16,10 +24,10 @@ function logout(){
 // need to do constants for body to post
 async function employeeCreateRequest(){
     let response = await fetch(
-        "http://127.0.0.1:5000//reimbursement_request", {
+        "http://127.0.0.1:5000/reimbursement_request", {
             method:"POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"employeeId":employeeId.value, "firstName":firstName.value, "lastName":lastName.value, "password":password.value})
+            body: JSON.stringify({"employeeId":employeeId.value, "managerId":managerId.value, "lastName":lastName.value, "password":password.value})
         }
     )
     if (response.status === 200){
