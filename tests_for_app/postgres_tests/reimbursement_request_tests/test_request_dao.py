@@ -21,8 +21,8 @@ def test_create_request_success():
 
 
 def test_select_all_requests_by_employee_id():
-    returned_employee_rr = request_dao.get_reimbursement_requests_by_id(2)
-    assert len(returned_employee_rr) >= 2
+    returned_employee_rr = request_dao.get_reimbursement_requests_by_id(3)
+    assert len(returned_employee_rr) >= 3
 
 
 def test_select_all_rr_success():

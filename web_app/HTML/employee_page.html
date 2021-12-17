@@ -8,6 +8,65 @@
     <header>Employee Request Page</header>
     <button id="logoutButton" onclick="logout()">logout</button>
 
+    <table id ="employeeTable">
+        <thead id="employeeHead">
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Manager ID
+                </th>
+                <th>
+                    Request Amount
+                </th>
+                <th>
+                    Employee Comment
+                </th>
+                <th>
+                    Manager Comment
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Request Date
+                </th>
+            </tr>
+        </thead>
+        <tbody id="employeeBody">
+            <!-- content will be added dynamically for employee table here   -->
+        </tbody>
+    </table>
+<hr>
+    <h3>Create A New Reimbursement Request</h3>
+    <div id="createRequestForm" class="container">
+        <label for="employeeIdInput"><b>Employee Id</b></label>
+        <input type="text" placeholder="Enter Your Id" id="employeeIdInput" required>
+        <br>
+        <label for="managerIdInput"><b>Manager Id</b></label>
+        <input type="text" placeholder="Enter Manager Id" id="managerIdInput" required>
+        <br>
+        <label for="requestAmountInput"><b>Amount Requested</b></label>
+        <input type="number" placeholder="Enter Request Amount" id="requestAmountInput" required>
+        <br>
+        <label for="employeeCommentInput"><b>Employee Comment</b></label>
+        <input type="text" placeholder="Enter Employee Comment" id="employeeCommentInput" required>
+        <br>
+        <label for="managerCommentInput"><b>Manager Comment</b></label>
+        <input type="text" placeholder="Enter Manager Comment" id="managerCommentInput" required>
+        <br>
+        <label for="statusBoxInput"><b>Status</b></label>
+        <input type="text" placeholder="Leave Blank" id="statusBoxInput" required>
+        <br>
+        <label for="requestDateInput"><b>Request Date</b></label>
+        <input type="datetime-local"  id="requestDateInput" required>
+        <br>
+        <button id="createRequestButton" onclick="employeeCreateRequest()">Create Request</button>
+        <br>
+
+    </div>
+
 </body>
 <script src="../js/employee_page.js"></script>
 </html>
