@@ -2,11 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manager Page</title>
 </head>
 <body>
+    <header><h1>Manager Request Page</h1></header>
+    <button id="logoutButton" onclick="logout()">logout</button>
+
+
+<!-- Approve , Deny, Comment-->
+    <h3>Update Reimbursement Request</h3>
+    <div id="updateRequestForm" class="container">
+        <label for="employeeIdInput"><b>Employee Id</b></label>
+        <input type="text" placeholder="Enter Your Id" id="employeeIdInput" disabled="disabled">
+        <br>
+        <label for="managerIdInput"><b>Manager Id</b></label>
+        <input type="text" placeholder="Manager Id" id="managerIdInput" required>
+        <br>
+        <label for="requestAmountInput"><b>Amount Requested</b></label>
+        <input type="number" placeholder="Enter Request Amount" id="requestAmountInput" required>
+        <br>
+        <label for="employeeCommentInput"><b>Employee Comment</b></label>
+        <input type="text" placeholder="Enter Employee Comment" id="employeeCommentInput" required>
+        <br>
+        <label for="managerCommentInput"><b>Manager Comment</b></label>
+        <input type="text" placeholder="Manager's Comment" id="managerCommentInput" required>
+        <br>
+        <label for="statusBoxInput"><b>Status</b></label>
+        <input type="text" placeholder=" " id="statusBoxInput" required>
+        <br>
+        <label for="requestDateInput"><b>Request Date</b></label>
+        <input type="datetime-local"  id="requestDateInput" disabled="disabled">
+        <br>
+        <button id="createRequestButton" onclick="managerUpdateRequest()">Update Request</button>
+        <br>
+
+    </div>
+
+    <!-- View All Pending -->
+
+    <table id ="pendingRRTable">
+        <thead id="pendingRRHead">
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Manager ID
+                </th>
+                <th>
+                    Request Amount
+                </th>
+                <th>
+                    Employee Comment
+                </th>
+                <th>
+                    Manager Comment
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Request Date
+                </th>
+            </tr>
+        </thead>
+        <tbody id="pendingRRTableBody">
+            <!-- content will be added dynamically for employee table here   -->
+        </tbody>
+    </table>
+<hr>
+
+     <!-- View All Completed -->
+     <table id ="completedRRTable">
+        <thead id="completedRRHead">
+            <tr>
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Manager ID
+                </th>
+                <th>
+                    Request Amount
+                </th>
+                <th>
+                    Employee Comment
+                </th>
+                <th>
+                    Manager Comment
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Request Date
+                </th>
+            </tr>
+        </thead>
+        <tbody id="completedRRTableBody">
+            <!-- content will be added dynamically for employee table here   -->
+        </tbody>
+    </table>
+<hr>
     
 </body>
 </html>
