@@ -41,26 +41,29 @@
 <hr>
     <h3>Create A New Reimbursement Request</h3>
     <div id="createRequestForm" class="container">
+        <label for="reimbursementIdInput"><b>Reimbursement Id</b></label>
+        <input type="text" placeholder="Enter 0" id="reimbursementIdInput">
+        <br>
         <label for="employeeIdInput"><b>Employee Id</b></label>
         <input type="text" placeholder="Enter Your Id" id="employeeIdInput" required>
         <br>
         <label for="managerIdInput"><b>Manager Id</b></label>
-        <input type="text" placeholder="Manager Id" id="managerIdInput" disabled="disabled">
+        <input type="text" placeholder="Manager Id" id="managerIdInput">
         <br>
         <label for="requestAmountInput"><b>Amount Requested</b></label>
-        <input type="number" placeholder="Enter Request Amount" id="requestAmountInput" required>
+        <input type="number" placeholder="Enter Request Amount" id="requestAmountInput" >
         <br>
         <label for="employeeCommentInput"><b>Employee Comment</b></label>
         <input type="text" placeholder="Enter Employee Comment" id="employeeCommentInput" required>
         <br>
         <label for="managerCommentInput"><b>Manager Comment</b></label>
-        <input type="text" placeholder="Manager's Comment" id="managerCommentInput" disabled="disabled">
+        <input type="text" placeholder="Manager's Comment" id="managerCommentInput" >
         <br>
         <label for="statusBoxInput"><b>Status</b></label>
-        <input type="text" placeholder=" " id="statusBoxInput" disabled="disabled">
+        <input type="text" placeholder=" " id="statusBoxInput" >
         <br>
         <label for="requestDateInput"><b>Request Date</b></label>
-        <input type="datetime-local"  id="requestDateInput" required>
+        <input type="date"  id="requestDateInput" required>
         <br>
         <button id="createRequestButton" onclick="employeeCreateRequest()">Create Request</button>
         <br>

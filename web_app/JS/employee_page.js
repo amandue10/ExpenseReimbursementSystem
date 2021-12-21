@@ -5,7 +5,8 @@ document.body.appendChild(header);
 const result = sessionStorage.getItem("value");
 
 // for create employee rr ----
-const employeeId = document.getElementById("idInput")
+const reimbursementId = document.getElementById("reimbursementIdInput")
+const employeeId = document.getElementById("employeeIdInput")
 const managerId = document.getElementById("managerIdInput")
 const requestAmount = document.getElementById("requestAmountInput")
 const employeeComment = document.getElementById("employeeCommentInput")
@@ -27,19 +28,16 @@ async function employeeCreateRequest(){
         "http://127.0.0.1:5000/reimbursement_request", {
             method:"POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"employeeId":employeeId.value, "managerId":managerId.value, "lastName":lastName.value, "password":password.value})
+            body: JSON.stringify({"employeeId":employeeId.value, "managerId":managerId.value, "requestAmount":requestAmount.value, "requestComment":employeeComment.value,"requestComment2":managerComment.value, "requestId":reimbursementId.value, "requestStatus":status.value, "rrDate":requestDate.value })
         }
     )
+
     if (response.status === 200){
         let body = await response.json()
-        if (body["validated"]){
-            sessionStorage.setItem("validated", true)
-            window.location.href = "employee_page.html"
-        } else {
-            alert("Employee login failed: please try again")
-        }
+
+     
     } else {
-        alert("your Employee login request failed")
+        alert("your Employee create request failed")
     }
 }
 
