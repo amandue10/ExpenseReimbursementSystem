@@ -79,7 +79,7 @@ async function getCompletedEmployeeData(){
 function populateData(responseBody){
     for (let reimbursement_request of responseBody){
         let tableRow = document.createElement("tr");
-        tableRow.innerHTML = `<td>${reimbursement_request.employeeId}</td><td>${reimbursement_request.managerId}</td><td>${reimbursement_request.requestAmount}</td><td>${reimbursement_request.requestComment}</td><td>${reimbursement_request.requestComment2}</td><td>${reimbursement_request.requestStatus}<td>${reimbursement_request.rrDate}</td>`;
+        tableRow.innerHTML = `<td>${reimbursement_request.requestId}</td><td>${reimbursement_request.employeeId}</td><td>${reimbursement_request.managerId}</td><td>${reimbursement_request.requestAmount}</td><td>${reimbursement_request.requestComment}</td><td>${reimbursement_request.requestComment2}</td><td>${reimbursement_request.requestStatus}<td>${reimbursement_request.rrDate}</td>`;
         pendingTableBody.appendChild(tableRow);
     }
 }
