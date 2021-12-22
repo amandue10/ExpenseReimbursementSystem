@@ -12,28 +12,31 @@
 <!-- Approve , Deny, Comment-->
     <h3>Update Reimbursement Request</h3>
     <div id="updateRequestForm" class="container">
+        <label for="reimbursementIdInput"><b>Reimbursement Id</b></label>
+        <input type="text" placeholder="Enter Reimbursement Id" id="reimbursementIdInput">
+        <br>
         <label for="employeeIdInput"><b>Employee Id</b></label>
-        <input type="text" placeholder="Enter Your Id" id="employeeIdInput" disabled="disabled">
+        <input type="text" placeholder="Enter Your Id" id="employeeIdInput" >
         <br>
         <label for="managerIdInput"><b>Manager Id</b></label>
-        <input type="text" placeholder="Manager Id" id="managerIdInput" required>
+        <input type="text" placeholder="Manager Id" id="managerIdInput" >
         <br>
         <label for="requestAmountInput"><b>Amount Requested</b></label>
-        <input type="number" placeholder="Enter Request Amount" id="requestAmountInput" required>
+        <input type="number" placeholder="Enter Request Amount" id="requestAmountInput" >
         <br>
         <label for="employeeCommentInput"><b>Employee Comment</b></label>
-        <input type="text" placeholder="Enter Employee Comment" id="employeeCommentInput" required>
+        <input type="text" placeholder="Enter Employee Comment" id="employeeCommentInput" >
         <br>
         <label for="managerCommentInput"><b>Manager Comment</b></label>
-        <input type="text" placeholder="Manager's Comment" id="managerCommentInput" required>
+        <input type="text" placeholder="Manager's Comment" id="managerCommentInput" >
         <br>
         <label for="statusBoxInput"><b>Status</b></label>
-        <input type="text" placeholder=" " id="statusBoxInput" required>
+        <input type="text" placeholder=" " id="statusBoxInput" >
         <br>
         <label for="requestDateInput"><b>Request Date</b></label>
-        <input type="datetime-local"  id="requestDateInput" disabled="disabled">
+        <input type="datetime"  id="requestDateInput" disabled="disabled">
         <br>
-        <button id="createRequestButton" onclick="managerUpdateRequest()">Update Request</button>
+        <button id="updateRequestButton" onclick="managerUpdateRequest()">Update Request</button>
         <br>
 
     </div>

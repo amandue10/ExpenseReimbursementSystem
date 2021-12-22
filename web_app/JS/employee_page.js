@@ -22,7 +22,7 @@ function logout(){
     window.location.href = "login.html";
 }
 
-// need to do constants for body to post
+
 async function employeeCreateRequest(){
     let response = await fetch(
         "http://127.0.0.1:5000/reimbursement_request", {
