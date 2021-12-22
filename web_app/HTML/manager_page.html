@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manager Page</title>
+    <title id="manTitle">Manager Page</title>
+    <link rel="stylesheet" href="../css/manager_page.css">
 </head>
 <body>
     <header><h1>Manager Request Page</h1></header>
-    <button id="logoutButton" onclick="logout()">logout</button>
-
+    <!-- <button id="logoutButton" onclick="logout()">logout</button> -->
+    <div id="logoutButton">
+        <button id="logoutButton" onclick="logout()">logout</button>
+    </div>
 
 <!-- Approve , Deny, Comment-->
     <h3>Update Reimbursement Request</h3>
@@ -31,7 +34,11 @@
         <input type="text" placeholder="Manager's Comment" id="managerCommentInput" >
         <br>
         <label for="statusBoxInput"><b>Status</b></label>
-        <input type="text" placeholder=" " id="statusBoxInput" >
+        <!-- <input type="text" placeholder=" " id="statusBoxInput" > -->
+        <select name="statusBoxInput" id="statusBoxInput">
+            <option value="approved-completed">Approved</option>
+            <option value="denied-completed">Denied</option>
+          </select>
         <br>
         <label for="requestDateInput"><b>Request Date</b></label>
         <input type="date"  id="requestDateInput">

@@ -12,7 +12,7 @@ class ReimbursementRequestDAO(ABC):
 
     # get all reimbursement requests by employee id
     @abstractmethod
-    def get_reimbursement_requests_by_id(self, employee_id: int) -> list[ReimbursementRequest]:
+    def get_reimbursement_requests_by_id(self, employee_id: int) -> ReimbursementRequest:
         pass
 
     # get all reimbursements information List

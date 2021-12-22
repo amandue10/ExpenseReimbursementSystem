@@ -33,6 +33,7 @@ async function employeeCreateRequest(){
     )
 
     if (response.status === 200){
+        document.location.reload(true)
         let body = await response.json()
 
      

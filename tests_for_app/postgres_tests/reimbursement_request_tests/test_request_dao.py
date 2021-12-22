@@ -3,7 +3,7 @@ from entities.reimbursement_request import ReimbursementRequest
 
 request_dao = ReimbursementRequestPostgresDAO()
 
-new_request = ReimbursementRequest(1, 3, 1, 200, "ice machine", " ", " ", '05 Dec 2012')
+new_request = ReimbursementRequest(1, 3, 1, 200, "Gas with receipts", " ", " ", '05 Dec 2021')
 
 status = {"approval-completed"}
 status.add("denied-completed")
@@ -12,7 +12,7 @@ status.add("denied-completed")
 
 random_status = status.pop()
 
-update_rr = ReimbursementRequest(2, 3, 1, 300, "birthday party", "I made this decision ...", random_status, '05 Dec 2012')
+update_rr = ReimbursementRequest(2, 3, 1, 300, "birthday party", "I made this decision ...", random_status, '05 Dec 2021')
 
 
 def test_create_request_success():
