@@ -34,7 +34,7 @@
         <input type="text" placeholder=" " id="statusBoxInput" >
         <br>
         <label for="requestDateInput"><b>Request Date</b></label>
-        <input type="datetime"  id="requestDateInput" disabled="disabled">
+        <input type="date"  id="requestDateInput">
         <br>
         <button id="updateRequestButton" onclick="managerUpdateRequest()">Update Request</button>
         <br>
@@ -42,7 +42,7 @@
     </div>
 
     <!-- View All Pending -->
-
+<h3>Pending Requests</h3>
     <table id ="pendingRRTable">
         <thead id="pendingRRHead">
             <tr>
@@ -76,6 +76,7 @@
 <hr>
 
      <!-- View All Completed -->
+     <h3>Completed Requests</h3>
      <table id ="completedRRTable">
         <thead id="completedRRHead">
             <tr>

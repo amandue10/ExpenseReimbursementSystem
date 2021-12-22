@@ -19,22 +19,15 @@ const managerComment = document.getElementById("managerCommentInput")
 const status = document.getElementById("statusBoxInput")
 const requestDate = document.getElementById("requestDateInput")
 
-// const results = sessionStorage.getItem("value");
-
-// function transfer1(reimbursementId){
-//     sessionStorage.setItem("value",reimbursementId.value);
-//     window.location.href = "manager_page.html";
-//     }
-
 
 
 // Update Request Data -----------------------------------------
 
 async function managerUpdateRequest(){
-   
+   let url = "http://127.0.0.1:5000/manager/request_decision/"
    
     let response = await fetch(
-        "http://127.0.0.1:5000/manager/request_decision/", {
+        url +  reimbursementId, {
             method:"PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({"employeeId":employeeId.value, "managerId":managerId.value, "requestAmount":requestAmount.value, "requestComment":employeeComment.value,"requestComment2":managerComment.value, "requestId":reimbursementId.value, "requestStatus":status.value, "rrDate":requestDate.value })
@@ -42,6 +35,7 @@ async function managerUpdateRequest(){
     )
 
     if (response.status === 200){
+        document.location.reload(true)
         let body = await response.json()
 
      
