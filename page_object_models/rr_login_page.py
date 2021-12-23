@@ -149,3 +149,13 @@ class RRLoginPage:
     def manager_select_update_button(self):
         element: WebElement = self.driver.find_element(By.ID, "updateRequestButton")
         return element
+
+    # -------------Manager view completed and pending requests ----------------------------------------
+
+    def get_pending_rr_requests(self):
+        element: WebElement = self.driver.find_element(By.ID, "pendingRRTableBody")
+        return element
+
+    def get_completed_rr_requests(self):
+        element: WebElement = self.driver.find_element(By.ID, "completedRRTableBody")
+        return element

@@ -22,6 +22,14 @@ Feature: The website should be able to login a Manager
       When manager clicks submit button to create a request
     Then the manager should have updated the reimbursement request
 
+  Scenario: As a Manager I should be able review pending reimbursement requests
+    Given The manager is on the manager home page waiting to view pending requests
+    Then The manager should be able to view pending reimbursement requests
+
+  Scenario: As a Manager I should be able review completed reimbursement requests
+    Given The manager is on the manager home page waiting to view completed requests
+    Then The manager should be able to view completed reimbursement requests
+
 
     Scenario: As an Manager I should be able to logout
     Given The logged in manager is on the Manager page

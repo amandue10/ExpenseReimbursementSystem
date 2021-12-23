@@ -98,7 +98,7 @@ def step_impl(context):
 
 @Then(u'The employee should be able to view the reimbursement requests')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then The employee should be able to view the reimbursement requests')
+    context.RRLoginPage.get_all_rr_requests()
 
 
 @Given(u'The logged in Employee is on the employee page waiting to logout')
