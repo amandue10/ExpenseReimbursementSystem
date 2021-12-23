@@ -1,8 +1,9 @@
-# import logging
-#
-# logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
+import logging
+
+logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+
 
 from data_access_layer.implementation_classes.employee_postgres_dao import EmployeePostgresDAO
 from data_access_layer.implementation_classes.manager_postgres_dao import ManagerPostgresDAO
@@ -37,7 +38,6 @@ def get_employee_rrs_by_employee_id(employee_id: str):
         rr_dictionaries = reimbursement_requests.make_rr_dictionary()
         employee_rr_as_dictionaries.append(rr_dictionaries)
         return jsonify(employee_rr_as_dictionaries), 200
-
 
 
 # create rr

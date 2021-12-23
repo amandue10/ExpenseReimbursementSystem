@@ -38,8 +38,8 @@ def step_impl(context):
 
 @Then(u'Manager should be redirected to the webpage with the title Manager Request Page')
 def step_impl(context):
-    time.sleep(.05)
-    assert context.driver.title == "Manager Request Page"
+    time.sleep(1)
+    assert context.driver.title == "ManagerRequestPage"
 
 
 @Given(u'The manager is on the manager home page')
