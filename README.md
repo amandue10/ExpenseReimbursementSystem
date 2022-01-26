@@ -1,4 +1,5 @@
 ## ExpenseReimbursementSystem
+You are tasked with creating an expense reimbursement system for a small company/group. This program will allow employees to create reimbursement requests, and all Managers can view these requests and approve or deny them. When they approve/deny they can optionally leave a message for the employee.
 ## User Stories:
 ## Employees
 - as an employee, I should be able to login so I can manage my reimbursements
